@@ -1,4 +1,4 @@
-INSERT INTO user_test
+INSERT INTO welp
     (username,password)
 VALUES
     ($1, $2)
