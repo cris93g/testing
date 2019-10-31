@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-class LogIn extends Component {
+class LogTest extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -9,7 +9,7 @@ class LogIn extends Component {
     };
     this.usernameHandler = this.usernameHandler.bind(this);
     this.passwordHandler = this.passwordHandler.bind(this);
-    this.addNewUser = this.addNewUser.bind(this);
+    this.check = this.check.bind(this);
   }
   usernameHandler(e) {
     this.setState({ username: e.target.value });
@@ -17,15 +17,18 @@ class LogIn extends Component {
   passwordHandler(e) {
     this.setState({ password: e.target.value });
   }
-  addNewUser() {
-    axios.post("/api/newuser", {
+
+  check() {
+    axios.post("/api/check", {
       user_name: this.state.username,
-      pass_word: this.state.password
+      new_pass_word: this.state.password
     });
   }
   render() {
+    console.log(this.state);
     return (
       <div>
+        test
         <form>
           Username:
           <input type="text" onChange={e => this.usernameHandler(e)} />
@@ -33,11 +36,10 @@ class LogIn extends Component {
           Password:
           <input type="text" onChange={e => this.passwordHandler(e)} />
           <br />
-          <button onClick={() => this.addNewUser()}>submit</button>
+          <button onClick={() => this.check()}>submit</button>
         </form>
       </div>
     );
   }
 }
-
-export default LogIn;
+export default LogTest;

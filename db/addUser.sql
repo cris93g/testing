@@ -1,5 +1,5 @@
-INSERT INTO welp
-    (username,password)
+INSERT INTO welp_o
+    (username,hash)
 VALUES
     ($1, $2)
 RETURNING *;

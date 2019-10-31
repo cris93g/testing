@@ -1,16 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Upload from './Upload';
-import LogIn from './LogIn';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import Upload from "./Upload";
+import LogIn from "./LogIn";
+import LogTest from "./LogTest";
 function App() {
-	return (
-		<div className="App">
-			<LogIn />
-			<br />
-			<Upload />
-		</div>
-	);
+  return (
+    <div className="App">
+      <LogIn />
+      <br />
+      {/* <Upload /> */}
+      <LogTest />
+    </div>
+  );
 }
 
 export default App;
