@@ -1,5 +1,5 @@
 INSERT INTO welp_o
-    (username,hash)
+    (username,hash,email,firstname,lastname,age)
 VALUES
-    ($1, $2)
+    ($1, $2, $3, $4, $5, $6)
 RETURNING *;

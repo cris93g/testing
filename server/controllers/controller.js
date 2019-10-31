@@ -2,11 +2,11 @@ const bcrypt = require("bcrypt");
 
 const addUser = async (req, res) => {
   console.log(req.body);
-  const { user_name, pass_word } = req.body;
+  const { user_name, pass_word, email, first_name, last_name, age } = req.body;
   const db = req.app.get("db");
   const rounds = 10;
   let hash = await bcrypt.hash(pass_word, rounds);
-  db.addUser([user_name, hash])
+  db.addUser([user_name, hash, email, first_name, last_name, age])
     .then(results => {
       res.status(200).send(results);
     })
@@ -22,7 +22,7 @@ const checkUser = (req, res) => {
       let { hash } = results[0];
       let check = await bcrypt.compare(new_pass_word, hash);
       if (check == true) {
-        console.log(results);
+        console.log("logged in");
       } else {
         console.log("thats not u");
       }
