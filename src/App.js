@@ -1,14 +1,14 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Upload from './Upload';
-import LogIn from './LogIn';
-import LogTest from './LogTest';
+import {HashRouter} from "react-router-dom"
+import routes from "./routes"
 function App() {
 	return (
+		<HashRouter>
 		<div className="App">
-			<LogTest />
+			{routes}
 		</div>
+		</HashRouter>
 	);
 }
 

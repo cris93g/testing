@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-
+						/*****AUTH ******/
 const addUser = async (req, res) => {
 	console.log(req.body);
 	const { user_name, pass_word, email, first_name, last_name, age } = req.body;
@@ -22,14 +22,15 @@ const addUser = async (req, res) => {
 
 const checkUser = (req, res) => {
 	const { user_name, new_pass_word } = req.body;
-	console.log(req.body);
 	const db = req.app.get('db');
 	db.getUser([ user_name, new_pass_word ]).then(async (results) => {
 		if (results[0]) {
 			let { hash } = results[0];
 			let check = await bcrypt.compare(new_pass_word, hash);
 			if (check == true) {
-				console.log(results);
+				req.session.user.push(results[0]);
+				res.status(200).send(req.session.user);
+				console.log(req.session.user)
 			} else {
 				console.log('thats not u');
 			}
@@ -37,7 +38,12 @@ const checkUser = (req, res) => {
 	});
 };
 
+const getUser =(req,res) =>{
+	res.status(200).send(req.session.user)
+}
+						/*****AUTH ******/
 module.exports = {
 	addUser,
-	checkUser
+	checkUser,
+	getUser
 };

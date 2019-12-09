@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from "react-router-dom"
 class LogTest extends Component {
 	constructor(props) {
 		super(props);
@@ -25,7 +26,6 @@ class LogTest extends Component {
 		});
 	}
 	render() {
-		console.log(this.state);
 		return (
 			<div>
 				<h1> Log In</h1>
@@ -36,8 +36,9 @@ class LogTest extends Component {
 					Password:
 					<input type="text" onChange={(e) => this.passwordHandler(e)} />
 					<br />
-					<button onClick={() => this.check()}>submit</button>
+				<Link to={`/home`}>	<button onClick={() => this.check()}>submit</button></Link>
 				</form>
+				<Link to={`/register`}><h1>Register</h1></Link>
 			</div>
 		);
 	}
